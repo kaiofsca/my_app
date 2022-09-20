@@ -36,8 +36,7 @@ export default function Customers() {
     // XL = EXTRA LARGE
 
   return (
-    <>
-        <h1>Customers</h1>
+    
         <Grid container>  {/* Essa propriedade "container" é um boleano true */}
             {
                 customers.map(item => (
@@ -53,6 +52,6 @@ export default function Customers() {
                 ))
             }   
         </Grid>
-    </>
+    
   )
 }
