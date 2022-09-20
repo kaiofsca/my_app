@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'
 
 import CustomersCard from '../components/CustomerCard'
 
@@ -36,7 +37,8 @@ export default function Customers() {
     // XL = EXTRA LARGE
 
   return (
-    
+    <>
+        <Link to="/customers">Customers</Link>
         <Grid container>  {/* Essa propriedade "container" é um boleano true */}
             {
                 customers.map(item => (
@@ -52,6 +54,7 @@ export default function Customers() {
                 ))
             }   
         </Grid>
+    </>
     
   )
 }
