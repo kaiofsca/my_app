@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
 
-import CustomersCard from '../components/CustomerCard'
+import CustomersCard from '../../components/CustomerCard'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Customers() {
+const List = () => {
     const classes = useStyles()
     const [customers, setCustomers] = useState([])
 
@@ -35,6 +35,17 @@ export default function Customers() {
     // LG = LARGE
     // XL = EXTRA LARGE
 
+    const handleRemoveCustomer = id => {
+        axios.delete(`https://reqres.in/api/users/${id}`)
+        .then(() => {
+            
+            const newCustomersState = customers.filter(customer => customer.id !== id)
+
+            setCustomers(newCustomersState)
+
+        })
+    }
+
   return (
     
         <Grid container>  {/* Essa propriedade "container" é um boleano true */}
@@ -42,11 +53,13 @@ export default function Customers() {
                 customers.map(item => (
                     <Grid item xs={12} md={4} xl={3}>
                         <CustomersCard 
+                            id={item.id}
                             name={item.first_name}
                             lastname={item.last_name}
                             email={item.email}
                             avatar={item.avatar}
                             className={classes.card}
+                            onRemoveCustomer={handleRemoveCustomer} // deixando o componente mais agnóstico possível
                         />
                     </Grid>
                 ))
@@ -56,3 +69,5 @@ export default function Customers() {
     
   )
 }
+
+export default List
