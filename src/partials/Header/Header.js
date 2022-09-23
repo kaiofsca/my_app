@@ -37,8 +37,6 @@ export default function Header() {
     handleToggleMenu()
   }
 
-  console.log(history)
-
   return (
     <>
       <AppBar position="static">
