@@ -26,6 +26,10 @@ const Register = () => {
         },
     })
 
+    const [ openToasty, setOpenToasty ] = useState(false)
+
+    const [ isLoading, setIsLoading ] = useState(false)
+
     const handleInputChange = (e) => {
         const { name, value } = e.target
 
@@ -39,6 +43,7 @@ const Register = () => {
     }
 
     const handleRegisterButton = () => {
+        setIsLoading(true)
         let HasError = false
         let newFormState = {
             ...form,
@@ -72,7 +77,8 @@ const Register = () => {
             name: form.name.value,
             job: form.job.value,
         }) .then((response) => {
-            console.log('ok', response)
+            setIsLoading(false)
+            setOpenToasty(true)
         })
 
     }
@@ -100,11 +106,18 @@ const Register = () => {
                 />
             </div>
             <div className={classes.wrapper}>
-                <Button variant="contained" color="primary" onClick={handleRegisterButton}>
-                    Cadastrar
+                <Button variant="contained" color="primary" onClick={handleRegisterButton} disable={isLoading}>
+                    {
+                        isLoading ? 'Aguarde...' : 'CADASTRAR'
+                    }
                 </Button>
             </div>
-            <Toasty open />
+            <Toasty 
+            open={openToasty} 
+            severity="success" 
+            text="Cadastro realizado com sucesso!"
+            onClose={() => setOpenToasty(false)}
+            />
         </>
     )
 }

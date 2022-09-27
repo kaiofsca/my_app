@@ -5,7 +5,7 @@ import {
 
 import MuiAlert from '@material-ui/lab/Alert';
 
-const Toasty = ({ open, onClose }) => {
+const Toasty = ({ open, text, severity, onClose }) => {
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -21,15 +21,13 @@ const Toasty = ({ open, onClose }) => {
           horizontal: 'left',
         }}
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={handleClose}
-        message="Note archived"
-        action={
-          <>
-            <MuiAlert elevation={6} variant="filled" severity="succsess" />
-          </>
-        }
-      />
+        >
+          <MuiAlert elevation={6} variant="filled" severity={severity}>
+            {text}
+          </MuiAlert>
+        </Snackbar>
   );
 }
 
