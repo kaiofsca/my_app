@@ -11,6 +11,7 @@
 - Material.ui
 - Axios
 - React-router-dom
+- API = reqres.in
 
 <h2> Vídeo do Projeto: </h2>
 

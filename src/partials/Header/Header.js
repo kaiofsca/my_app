@@ -22,7 +22,8 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 import useStyles from './Header.style';
 
-export default function Header() {
+
+export default function Header({ user }) {
   const classes = useStyles()
   const history = useHistory()
 
@@ -44,10 +45,10 @@ export default function Header() {
             <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => handleToggleMenu()}>
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h6" className={classes.title}> 
               My App
             </Typography>
-            <Button color="inherit">Login</Button>
+               <Button color="inherit">Login</Button> 
           </Toolbar>
       </AppBar>
       <Drawer open={menuOpen} onClose={() => handleToggleMenu()}>
