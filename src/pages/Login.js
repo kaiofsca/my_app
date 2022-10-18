@@ -43,19 +43,12 @@ const Login = () => {
     }
 
     const handleFormSubmit = () => {
-        setTimeout(() => {
-            setIsLoading(true)
-        
-            const response = {
-                success: true,
-                user: {
-                    email: form.email
-                }
-            }
+        setIsLoading(true)
 
+        setTimeout(() => {
             setUser({
-                logged: response.success,
-                user: response.user,
+                logged: true,
+                email: form.email,
             })
 
         }, 4000)

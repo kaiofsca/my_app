@@ -48,7 +48,11 @@ export default function Header({ user }) {
             <Typography variant="h6" className={classes.title}> 
               My App
             </Typography>
-               <Button color="inherit">Login</Button> 
+              {
+                user.logged
+                ? <Typography variant="h6">{user.email}</Typography>
+                : <Button color="inherit">Login</Button>
+              } 
           </Toolbar>
       </AppBar>
       <Drawer open={menuOpen} onClose={() => handleToggleMenu()}>
