@@ -14,6 +14,7 @@
 - Axios
 - React-router-dom
 - API = reqres.in
+- Context API
 
 <h2> Vídeo do Projeto: </h2>
 
